@@ -29,18 +29,17 @@ if __name__ == '__main__':
     # シャットダウンフレーム
     frame1 = LabelFrame(root, text="Shutdown Menu")
     frame1.grid()
-    # リストボックス
+
+    # シャットダウンリストボックス
     currencies = ('シャットダウン', '再起動', '中止')
     v1 = StringVar(value=currencies)
     lb = Listbox(frame1, listvariable=v1,height=3)
     lb.grid(row=0, column=0)
 
-    # ボックス
-    
-    #Button
-    
+    # シャットダウンボタン
     button1 = ttk.Button(frame1, text='OK', command=button_click)
-    
     button1.grid(row=0, column=1)
+
+    #↓ここからタイマー
     
     root.mainloop()
