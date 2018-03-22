@@ -3,13 +3,13 @@ from tkinter import *
 from tkinter import ttk
 
 def function1(v1):
-    if v1 == "シャットダウン":
+    if v1 == 'シャットダウン':
         cmd = 'shutdown -s -t 3600'
         return subprocess.call(cmd, shell = True)
-    elif v1 == ('再起動'):
+    elif v1 == '再起動':
         cmd = 'shutdown -r -t 3600'
         return subprocess.call(cmd, shell = True)
-    elif v1 == ('中止'):
+    elif v1 == '中止':
         cmd = 'shutdown -a'
         return subprocess.call(cmd, shell = True)
     else:
@@ -24,17 +24,18 @@ def show_selection():
 
 if __name__ == '__main__':
     root = Tk()
-    root.title('shutdown')
+    root.title('shutdown timer')
     
-    # フレーム
-    frame1 = ttk.Frame(root, padding=10)
+    # シャットダウンフレーム
+    frame1 = LabelFrame(root, text="Shutdown Menu")
     frame1.grid()
-    
     # リストボックス
     currencies = ('シャットダウン', '再起動', '中止')
     v1 = StringVar(value=currencies)
     lb = Listbox(frame1, listvariable=v1,height=3)
     lb.grid(row=0, column=0)
+
+    # ボックス
     
     #Button
     
