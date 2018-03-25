@@ -22,6 +22,8 @@ def show_selection():
     for i in lb.curselection():
        function1(lb.get(i))
 
+
+
 if __name__ == '__main__':
     root = Tk()
     root.title('shutdown timer')
@@ -41,5 +43,15 @@ if __name__ == '__main__':
     button1.grid(row=0, column=1)
 
     #↓ここからタイマー
-    
+    #タイマーフレーム
+    timerframe = LabelFrame(root, text="Timer")
+    timerframe.grid()
+
+    #ラジオボタンで時間 分 秒 の指定
+
+    #タイマー入力
+    EditBox = Entry(timerframe,text = "時間を入力")
+    #EditBox.insert(END,"時間を入力")
+    EditBox.grid()
+    EditBox.delete(0,END)
     root.mainloop()
