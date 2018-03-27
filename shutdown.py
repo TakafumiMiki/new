@@ -5,26 +5,46 @@ from tkinter import ttk
 def function1(v1):
     if v1 == 'シャットダウン':
         cmd = 'shutdown -s -t '
-        return subprocess.call(cmd, shell = True)
+        return cmd
+        #return subprocess.call(cmd, shell = True)
     elif v1 == '再起動':
         cmd = 'shutdown -r -t '
-        return subprocess.call(cmd, shell = True)
+        return cmd
+        #return subprocess.call(cmd, shell = True)
     elif v1 == '中止':
         cmd = 'shutdown -a'
-        return subprocess.call(cmd, shell = True)
+        return cmd
+        #return subprocess.call(cmd, shell = True)
     else:
         print ('だめ')
 
 def button_click():
     show_selection()
-    
+
 def show_selection():
     for i in lb.curselection():
        function1(lb.get(i))
 
        #追加
 def show_timecommand():
-    print(v1.get())
+    try:
+        if(function1(lb.get(lb.curselection())) != 'shutdown -a'):
+            print(function1(lb.get(lb.curselection())) + str(v1.get()))
+            
+        else:
+            print(function1(lb.get(lb.curselection())))
+
+    except Exception:
+        print("どちらかが指定されてないです")
+"""
+        if(function1(lb.get(lb.curselection())) is None):
+            if(v1.get() is None):
+                print("両方指定されてないです")
+            elif():
+                print("function1()が選択されてないです")
+        elif(): 
+            print("時間が選択されてないです")
+"""
 
 def rb_clicked():
     show_timecommand()
@@ -54,6 +74,7 @@ if __name__ == '__main__':
 
     #ラジオボタンで時間 分 秒 の指定
     v1 = IntVar()
+
     #時間(下の時間に*3600)
     rb1 = ttk.Radiobutton(
         timerframe,
@@ -87,9 +108,7 @@ if __name__ == '__main__':
     button2.grid(row = 2,column=1)
 
     #タイマー入力
-    EditBox = Entry(timerframe,text = "時間を入力")
-    
-    #EditBox.insert(END,"時間を入力")
+    EditBox = Entry(timerframe)
     EditBox.grid()
     EditBox.delete(0,END)
 
