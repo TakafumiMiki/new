@@ -1,7 +1,11 @@
 import datetime 
 import re
 
-stime = "20:00"
+stime = "21:00"
+if stime[0] == ":":
+    print("あかん")
+    exit()
+
 if ":" in stime:
     b = re.split(':', stime)
 else: 
